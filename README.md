@@ -63,6 +63,8 @@
 - https://github.com/keven1z/XXEDemo
 - https://github.com/Maskhe/xxeDemo
 - https://github.com/d1y1n/xxetester
+- https://cheatsheetseries.owasp.org/cheatsheets/XML_External_Entity_Prevention_Cheat_Sheet.html
+- https://hdivsecurity.com/owasp-xml-external-entities-xxe
 
 ## 02-XXE漏洞基础
 
@@ -103,6 +105,7 @@
 
 - XXE漏洞如何执行系统命令？
 - Blind XXE 如何读取敏感文件？
+- XXE漏洞最大可以读取多少字节的文件？
 
 ## 03-XXE漏洞工具
 
@@ -192,3 +195,5 @@
   - 过滤关键词：<!DOCTYPE和<!ENTITY，或者SYSTEM和PUBLIC。
 
 ## 08-XXE参考资源
+
+- https://github.com/ASTTeam/XXE
