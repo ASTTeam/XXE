@@ -2,7 +2,7 @@
 
 本项目用来收集整理XXE漏洞的相关内容，包括XXE的利用方法工具或思路等。XXE漏洞往往不可以执行命令，但往往可以通过文件读取方法获取敏感信息，之后进一步Getshell！作者：[ASTTeam](https://github.com/ASTTeam/XXE)
 
-本项目创建于2022年3月3日，最近的一次更新时间为2022年3月7日。本项目会持续更新，直到海枯石烂！
+本项目创建于2022年3月3日，最近的一次更新时间为2022年5月3日。本项目会持续更新，直到海枯石烂！
 
 - [01-XXE漏洞资源]()
 - [02-XXE漏洞基础]()
@@ -65,6 +65,7 @@
 - https://github.com/d1y1n/xxetester
 - https://cheatsheetseries.owasp.org/cheatsheets/XML_External_Entity_Prevention_Cheat_Sheet.html
 - https://hdivsecurity.com/owasp-xml-external-entities-xxe
+- https://vk9-sec.com/xml-external-entity-xxe-injection
 
 ## 02-XXE漏洞基础
 
