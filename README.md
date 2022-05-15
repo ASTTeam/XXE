@@ -2,7 +2,7 @@
 
 本项目用来收集整理XXE漏洞的相关内容，包括XXE的利用方法工具或思路等。XXE漏洞往往不可以执行命令，但往往可以通过文件读取方法获取敏感信息，之后进一步Getshell！作者：[ASTTeam](https://github.com/ASTTeam/XXE)
 
-本项目创建于2022年3月3日，最近的一次更新时间为2022年5月3日。本项目会持续更新，直到海枯石烂！
+本项目创建于2022年3月3日，最近的一次更新时间为2022年5月13日。本项目会持续更新，直到海枯石烂！
 
 - [01-XXE漏洞资源]()
 - [02-XXE漏洞基础]()
@@ -140,6 +140,7 @@
 - https://github.com/luisfontes19/xxexploiter
 - https://github.com/enjoiz/XXEinjector
 - https://github.com/suanve/xxeserver
+- https://github.com/whitel1st/docem
 
 ## 04-XXE渗透测试
 
