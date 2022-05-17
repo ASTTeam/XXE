@@ -1,8 +1,8 @@
-# 《深入理解XXE漏洞》
+# 《深入理解WEB漏洞之XXE漏洞》
 
 本项目用来收集整理XXE漏洞的相关内容，包括XXE的利用方法工具或思路等。XXE漏洞往往不可以执行命令，但往往可以通过文件读取方法获取敏感信息，之后进一步Getshell！作者：[ASTTeam](https://github.com/ASTTeam/XXE)
 
-本项目创建于2022年3月3日，最近的一次更新时间为2022年5月13日。本项目会持续更新，直到海枯石烂！
+本项目创建于2022年3月3日，最近的一次更新时间为2022年5月16日。本项目会持续更新，直到海枯石烂！
 
 - [01-XXE漏洞资源]()
 - [02-XXE漏洞基础]()
@@ -66,6 +66,7 @@
 - https://cheatsheetseries.owasp.org/cheatsheets/XML_External_Entity_Prevention_Cheat_Sheet.html
 - https://hdivsecurity.com/owasp-xml-external-entities-xxe
 - https://vk9-sec.com/xml-external-entity-xxe-injection
+- https://www.secpulse.com/archives/178950.html
 
 ## 02-XXE漏洞基础
 
@@ -77,18 +78,19 @@
 
 - 四种实体？
 
-  - 内置实体
+  - **内置实体**
+    
     | 实体 | 实体引用 | 含义              |
     | ---- | -------- | ----------------- |
     | lt   | &lt;     | <（小于号）       |
     | gt   | &gt;     | >（大于号）       |
     | amp  | &amp;    | &（“and”符）      |
     | apos | &apos;   | '（撇号或单引号） |
-    | quot | &quot;   | "（双引号）       |
-
-  - 字符实体
-  - 通用实体
-  - 参数实体
+  | quot | &quot;   | "（双引号）       |
+    
+  - **字符实体**
+  - **通用实体**
+  - **参数实体**
 
 - 什么是XXE漏洞？
 
@@ -150,6 +152,8 @@
 - XXE漏洞经常出现的位置？
 
 二、XXE漏洞实战
+
+- 
 
 三、XXE高级利用
 
